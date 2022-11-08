@@ -16,4 +16,5 @@ router
   .route("/recover-password/:token")
   .get((req, res) => AuthController.checkToken(req, res))
   .post((req, res) => AuthController.newPassword(req, res));
+
 export default router;

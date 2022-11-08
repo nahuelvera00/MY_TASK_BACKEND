@@ -3,6 +3,8 @@ import AuthService from "../services/database/authService";
 class AuthController {
   constructor() {}
 
+  //------------------ REGISTER NEW USER --------------------------------
+
   async register(req, res) {
     const result = await AuthService.createUser(req.body);
     if (result.error) {
@@ -10,6 +12,8 @@ class AuthController {
     }
     res.json(result);
   }
+
+  //----------------- CONFIRM ACCOUNT ---------------------
 
   async confirmAccount(req, res) {
     const { token } = req.params;
@@ -22,6 +26,8 @@ class AuthController {
     res.json(result);
   }
 
+  //---------------- LOGIN, RETURN PROFILE -----------------
+
   async auth(req, res) {
     const { email, password } = req.body;
     const result = await AuthService.authenticate(email, password);
@@ -31,6 +37,8 @@ class AuthController {
     }
     res.json(result.user);
   }
+
+  // ---------------- RECOVER PASSWORD ----------------------
 
   async recoverPassword(req, res) {
     const { email } = req.body;
@@ -42,6 +50,8 @@ class AuthController {
     res.json(result);
   }
 
+  //------------------------- VALIDATE TOKEN -----------------
+
   async checkToken(req, res) {
     const { token } = req.params;
     const result = await AuthService.check(token);
@@ -51,6 +61,8 @@ class AuthController {
     }
     res.json(result);
   }
+
+  //------------------------- NEW PASSWORD  ------------------
 
   async newPassword(req, res) {
     const { token } = req.params;

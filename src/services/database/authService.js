@@ -8,6 +8,8 @@ import {
 class AuthService {
   constructor() {}
 
+  //---------------------------- CREATE NEW USER -----------------------------
+
   async createUser(data) {
     const { email } = data;
     //VERIFY DATA
@@ -40,6 +42,8 @@ class AuthService {
     }
   }
 
+  //------------------ CONFIRM USER --------------------------------------
+
   async confirmUser(token) {
     const user = await User.findOne({ token: token });
     if (!user) {
@@ -56,6 +60,8 @@ class AuthService {
       return { error: true, msg: "Server error" };
     }
   }
+
+  //------------------ LOGIN -------------------------------------------
 
   async authenticate(email, password) {
     const user = await User.findOne({ email: email }).select(
@@ -89,6 +95,8 @@ class AuthService {
       return { error: true, msg: error.message };
     }
   }
+
+  //------------------------ RECOVER PASSWORD --------------------------------
 
   async recoverPass(email) {
     const user = await User.findOne({ email: email });

@@ -11,6 +11,7 @@ import { fileURLToPath } from "url";
 import connectDB from "./config/db";
 //IMPORT ROUTES
 import authRoutes from "./routes/auth.routes";
+import taskRoutes from "./routes/task.routes";
 //INIT APP
 const app = express();
 app.use(express.json());
@@ -43,6 +44,7 @@ app.use(
 
 //ROUTES
 app.use("/api/auth", authRoutes);
+app.use("/api/task", taskRoutes);
 
 //PUBLIC
 app.use(express.static("public"));
