@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const taskSchema = mongoose.Schema({
+const taskGroupSchema = mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -23,7 +23,7 @@ const taskSchema = mongoose.Schema({
     required: true,
     default: new Date(),
   },
-  deliverDate: {
+  deliverDateGroup: {
     type: Date,
     required: true,
   },
@@ -36,8 +36,12 @@ const taskSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+  assigned: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
-const Task = mongoose.model("Task", taskSchema);
+const TaskGroup = mongoose.model("TaskGroup", taskGroupSchema);
 
-export default Task;
+export default TaskGroup;

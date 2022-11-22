@@ -8,6 +8,7 @@ class TaskService {
 
   async create(data, user) {
     const { title, description, deliverDate, priority } = data;
+    console.log(deliverDate);
 
     //USER VALIDATION
     const userExist = await User.findById(user._id);
@@ -99,7 +100,7 @@ class TaskService {
         task.deliverDate = deliverDate || task.deliverDate;
         task.priority = priority || task.priority;
         task.state = state || task.state;
-        task.save();
+        await task.save();
         return { error: false, msg: "Task updated successfully" };
       } catch (error) {
         console.log(error);

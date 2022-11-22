@@ -9,9 +9,12 @@ import { fileURLToPath } from "url";
 
 //DATABASE
 import connectDB from "./config/db";
+
 //IMPORT ROUTES
 import authRoutes from "./routes/auth.routes";
 import taskRoutes from "./routes/task.routes";
+import groupRoutes from "./routes/group.routes";
+
 //INIT APP
 const app = express();
 app.use(express.json());
@@ -45,6 +48,7 @@ app.use(
 //ROUTES
 app.use("/api/auth", authRoutes);
 app.use("/api/task", taskRoutes);
+app.use("/api/group", groupRoutes);
 
 //PUBLIC
 app.use(express.static("public"));
